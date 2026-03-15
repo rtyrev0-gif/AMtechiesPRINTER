@@ -1,0 +1,75 @@
+# ═══════════════════════════════════════════════════════════════
+#  AMtechiesPRINTER — Apache .htaccess
+#  Place this file in your website root (same folder as index.html)
+# ═══════════════════════════════════════════════════════════════
+
+# ── Enable Rewrite Engine ──────────────────────────────────────
+Options -Indexes
+RewriteEngine On
+
+# ── Force HTTPS ────────────────────────────────────────────────
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# ── Force www (optional — remove if not needed) ───────────────
+# RewriteCond %{HTTP_HOST} !^www\.
+# RewriteRule ^(.*)$ https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# ── Protect admin.html with basic note ────────────────────────
+# (Actual auth is JS-based; for server-level protection see README)
+# <FilesMatch "^admin\.html$">
+#   AuthType Basic
+#   AuthName "Admin Area"
+#   AuthUserFile /path/to/.htpasswd
+#   Require valid-user
+# </FilesMatch>
+
+# ── Security Headers ──────────────────────────────────────────
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set X-XSS-Protection "1; mode=block"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+  # Remove server version info
+  Header unset Server
+  Header unset X-Powered-By
+</IfModule>
+
+# ── Content Security Policy ───────────────────────────────────
+<IfModule mod_headers.c>
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com https://embed.tawk.to https://formsubmit.co; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://formsubmit.co https://embed.tawk.to wss://ws.tawk.to; frame-src 'self' https://embed.tawk.to;"
+</IfModule>
+
+# ── Gzip Compression ─────────────────────────────────────────
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
+  AddOutputFilterByType DEFLATE application/javascript application/json
+  AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# ── Browser Caching ───────────────────────────────────────────
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html                "access plus 1 hour"
+  ExpiresByType text/css                 "access plus 1 month"
+  ExpiresByType application/javascript   "access plus 1 month"
+  ExpiresByType image/png                "access plus 6 months"
+  ExpiresByType image/jpeg               "access plus 6 months"
+  ExpiresByType image/webp               "access plus 6 months"
+  ExpiresByType image/svg+xml            "access plus 6 months"
+  ExpiresByType image/x-icon             "access plus 1 year"
+  ExpiresByType application/font-woff2   "access plus 1 year"
+</IfModule>
+
+# ── Block Bad Bots ────────────────────────────────────────────
+<IfModule mod_rewrite.c>
+  RewriteCond %{HTTP_USER_AGENT} (libwww-perl|wget|python|nikto|scan) [NC,OR]
+  RewriteCond %{HTTP_USER_AGENT} (<|>|'|%0A|%0D|%27|%3C|%3E|%00) [NC]
+  RewriteRule .* - [F,L]
+</IfModule>
+
+# ── Custom Error Pages ────────────────────────────────────────
+ErrorDocument 403 /index.html
+ErrorDocument 404 /index.html

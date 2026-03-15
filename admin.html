@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AMtechiesPRINTER – Admin Panel</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{
+      --navy:#070d1f;--navy2:#0c1530;--navy3:#111d3f;
+      --cyan:#00d4ff;--gold:#f5a623;--green:#00e896;--red:#ff4757;
+      --text:#e8eeff;--muted:#8a9cc4;--card:#0e1a3a;
+      --border:rgba(0,212,255,0.15);
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:'Outfit',sans-serif;background:var(--navy);color:var(--text);min-height:100vh;overflow-x:hidden}
+    ::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:var(--navy)}::-webkit-scrollbar-thumb{background:var(--cyan);border-radius:3px}
+
+    /* ── LOGIN SCREEN ── */
+    #loginScreen{
+      position:fixed;inset:0;z-index:9999;
+      background:var(--navy);
+      display:flex;align-items:center;justify-content:center;
+    }
+    .login-box{
+      width:100%;max-width:420px;
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:24px;
+      padding:48px 40px;
+      text-align:center;
+    }
+    .login-logo{
+      width:60px;height:60px;
+      background:linear-gradient(135deg,var(--cyan),#0066ff);
+      border-radius:16px;
+      display:flex;align-items:center;justify-content:center;
+      font-size:1.5rem;margin:0 auto 20px;
+      box-shadow:0 0 30px rgba(0,212,255,.25);
+    }
+    .login-box h2{font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:800;margin-bottom:6px}
+    .login-box p{color:var(--muted);font-size:.88rem;margin-bottom:32px}
+    .login-field{
+      background:rgba(0,0,0,.3);
+      border:1.5px solid var(--border);
+      border-radius:12px;padding:14px 16px;
+      width:100%;color:var(--text);
+      font-family:'Outfit',sans-serif;font-size:.95rem;
+      outline:none;transition:border-color .2s;margin-bottom:16px;
+    }
+    .login-field:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(0,212,255,.1)}
+    .login-btn{
+      width:100%;background:linear-gradient(135deg,var(--cyan),#0066ff);
+      border:none;color:#fff;padding:14px;border-radius:12px;
+      font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;
+      cursor:pointer;transition:all .3s;letter-spacing:.5px;
+    }
+    .login-btn:hover{opacity:.9;transform:translateY(-1px)}
+    .login-err{
+      background:rgba(255,71,87,.12);border:1px solid rgba(255,71,87,.3);
+      border-radius:10px;padding:12px;color:var(--red);font-size:.83rem;
+      margin-top:12px;display:none;
+    }
+    .login-attempts{font-size:.75rem;color:var(--muted);margin-top:10px}
+
+    /* ── MAIN LAYOUT ── */
+    #adminApp{display:none;min-height:100vh}
+
+    .sidebar{
+      position:fixed;top:0;left:0;height:100vh;width:260px;
+      background:var(--navy2);border-right:1px solid var(--border);
+      display:flex;flex-direction:column;z-index:100;
+    }
+    .sb-brand{
+      padding:24px 20px;border-bottom:1px solid var(--border);
+      display:flex;align-items:center;gap:12px;
+    }
+    .sb-brand-icon{
+      width:42px;height:42px;
+      background:linear-gradient(135deg,var(--cyan),#0066ff);
+      border-radius:10px;display:flex;align-items:center;justify-content:center;
+      font-size:1.1rem;
+    }
+    .sb-brand-text span:first-child{
+      display:block;font-family:'Syne',sans-serif;font-weight:800;font-size:.95rem;
+    }
+    .sb-brand-text span:last-child{font-size:.62rem;color:var(--cyan);letter-spacing:2px;text-transform:uppercase}
+
+    .sb-nav{flex:1;padding:16px 0;overflow-y:auto}
+    .sb-nav-title{
+      font-size:.68rem;text-transform:uppercase;letter-spacing:2px;
+      color:var(--muted);padding:10px 20px 6px;font-weight:600;
+    }
+    .sb-link{
+      display:flex;align-items:center;gap:12px;
+      padding:12px 20px;color:var(--muted);cursor:pointer;
+      font-size:.88rem;font-weight:500;transition:all .2s;border:none;background:none;width:100%;text-align:left;
+      border-left:3px solid transparent;
+    }
+    .sb-link i{width:18px;text-align:center;font-size:.9rem}
+    .sb-link:hover{color:var(--text);background:rgba(0,212,255,.05);border-left-color:rgba(0,212,255,.3)}
+    .sb-link.active{color:var(--cyan);background:rgba(0,212,255,.08);border-left-color:var(--cyan)}
+
+    .sb-footer{
+      padding:16px 20px;border-top:1px solid var(--border);
+      font-size:.78rem;color:var(--muted);
+    }
+    .sb-footer .status-dot{
+      width:8px;height:8px;background:var(--green);
+      border-radius:50%;display:inline-block;margin-right:6px;
+      animation:blink 2s infinite;
+    }
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:.4}}
+
+    .main-content{
+      margin-left:260px;min-height:100vh;
+      padding:32px;background:var(--navy);
+    }
+    .topbar-admin{
+      display:flex;justify-content:space-between;align-items:center;
+      margin-bottom:32px;
+    }
+    .page-title{font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:800}
+    .page-sub{color:var(--muted);font-size:.85rem;margin-top:4px}
+    .logout-btn{
+      background:rgba(255,71,87,.12);border:1px solid rgba(255,71,87,.3);
+      color:var(--red);padding:8px 18px;border-radius:10px;
+      font-size:.83rem;font-weight:600;cursor:pointer;transition:all .2s;
+      display:flex;align-items:center;gap:8px;
+    }
+    .logout-btn:hover{background:rgba(255,71,87,.2)}
+
+    /* ── PANELS ── */
+    .panel{display:none}
+    .panel.active{display:block}
+
+    /* ── CARDS ── */
+    .card{
+      background:var(--card);border:1px solid var(--border);
+      border-radius:20px;padding:32px;margin-bottom:24px;
+    }
+    .card-title{
+      font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700;
+      margin-bottom:6px;display:flex;align-items:center;gap:10px;
+    }
+    .card-title i{color:var(--cyan)}
+    .card-sub{color:var(--muted);font-size:.83rem;margin-bottom:24px}
+
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    .form-group{margin-bottom:20px}
+    .form-group label{
+      display:block;font-size:.78rem;font-weight:600;color:var(--muted);
+      margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px;
+    }
+    .form-input{
+      width:100%;background:rgba(0,0,0,.3);border:1.5px solid var(--border);
+      border-radius:12px;padding:13px 16px;color:var(--text);
+      font-family:'Outfit',sans-serif;font-size:.92rem;outline:none;transition:all .2s;
+    }
+    .form-input:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(0,212,255,.1)}
+    .form-input::placeholder{color:rgba(138,156,196,.4)}
+
+    .save-btn{
+      background:linear-gradient(135deg,var(--cyan),#0066ff);
+      border:none;color:#fff;padding:13px 28px;border-radius:12px;
+      font-family:'Syne',sans-serif;font-size:.92rem;font-weight:700;
+      cursor:pointer;transition:all .3s;display:inline-flex;align-items:center;gap:8px;
+      box-shadow:0 4px 15px rgba(0,212,255,.25);
+    }
+    .save-btn:hover{opacity:.9;transform:translateY(-1px)}
+    .save-btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+
+    .toast{
+      position:fixed;bottom:28px;right:28px;z-index:9999;
+      background:rgba(0,232,150,.12);border:1px solid rgba(0,232,150,.4);
+      color:var(--green);padding:14px 22px;border-radius:14px;
+      font-size:.88rem;font-weight:600;display:none;
+      align-items:center;gap:10px;box-shadow:0 8px 30px rgba(0,0,0,.3);
+      animation:slideIn .3s ease;
+    }
+    @keyframes slideIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+    /* ── DASHBOARD STATS ── */
+    .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-bottom:28px}
+    .stat-tile{
+      background:var(--card);border:1px solid var(--border);
+      border-radius:16px;padding:24px;transition:all .2s;
+    }
+    .stat-tile:hover{border-color:rgba(0,212,255,.4);transform:translateY(-2px)}
+    .stat-tile .st-icon{
+      width:46px;height:46px;border-radius:12px;
+      display:flex;align-items:center;justify-content:center;font-size:1.1rem;margin-bottom:16px;
+    }
+    .stat-tile .st-num{font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;color:var(--cyan)}
+    .stat-tile .st-lbl{font-size:.78rem;color:var(--muted);margin-top:4px}
+    .st-icon.blue{background:rgba(0,212,255,.12);color:var(--cyan)}
+    .st-icon.green{background:rgba(0,232,150,.12);color:var(--green)}
+    .st-icon.gold{background:rgba(245,166,35,.12);color:var(--gold)}
+    .st-icon.red{background:rgba(255,71,87,.12);color:var(--red)}
+
+    /* ── CURRENT CONFIG DISPLAY ── */
+    .config-display{
+      display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px;
+    }
+    .cfg-item{
+      background:rgba(0,212,255,.05);border:1px solid rgba(0,212,255,.2);
+      border-radius:14px;padding:18px;
+    }
+    .cfg-item .cfg-key{font-size:.72rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:6px}
+    .cfg-item .cfg-val{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:var(--text)}
+    .cfg-item .cfg-val.tfn{color:var(--gold)}
+    .cfg-item .cfg-val.email{color:var(--cyan)}
+
+    /* ── TAWK.TO SETUP CARD ── */
+    .tawk-steps{counter-reset:steps}
+    .tawk-step{
+      display:flex;gap:16px;align-items:flex-start;margin-bottom:20px;
+    }
+    .tawk-step-num{
+      width:32px;height:32px;flex-shrink:0;
+      border-radius:50%;background:linear-gradient(135deg,rgba(0,212,255,.2),rgba(0,102,255,.2));
+      border:1px solid rgba(0,212,255,.3);
+      display:flex;align-items:center;justify-content:center;
+      font-family:'Syne',sans-serif;font-weight:800;font-size:.85rem;color:var(--cyan);
+    }
+    .tawk-step-body h4{font-size:.9rem;font-weight:600;margin-bottom:4px}
+    .tawk-step-body p{font-size:.82rem;color:var(--muted);line-height:1.5}
+    .tawk-step-body a{color:var(--cyan);text-decoration:none}
+    .tawk-step-body a:hover{text-decoration:underline}
+    .code-block{
+      background:rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.08);
+      border-radius:10px;padding:14px 16px;margin-top:8px;
+      font-family:monospace;font-size:.8rem;color:#a8d8ea;
+      word-break:break-all;line-height:1.6;
+    }
+
+    /* ── PASSWORD CHANGE ── */
+    .pw-warn{
+      background:rgba(245,166,35,.08);border:1px solid rgba(245,166,35,.25);
+      border-radius:12px;padding:14px 18px;font-size:.83rem;color:var(--gold);
+      margin-bottom:20px;display:flex;align-items:center;gap:10px;
+    }
+
+    /* ── ACTIVITY LOG ── */
+    .log-item{
+      display:flex;align-items:center;gap:14px;
+      padding:14px 0;border-bottom:1px solid var(--border);
+    }
+    .log-item:last-child{border-bottom:none}
+    .log-icon{
+      width:36px;height:36px;border-radius:10px;flex-shrink:0;
+      display:flex;align-items:center;justify-content:center;font-size:.85rem;
+    }
+    .log-icon.change{background:rgba(0,212,255,.1);color:var(--cyan)}
+    .log-icon.login{background:rgba(0,232,150,.1);color:var(--green)}
+    .log-text{flex:1}
+    .log-text .log-action{font-size:.88rem;font-weight:600}
+    .log-text .log-time{font-size:.75rem;color:var(--muted)}
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:768px){
+      .sidebar{transform:translateX(-100%);transition:transform .3s}
+      .sidebar.open{transform:translateX(0)}
+      .main-content{margin-left:0}
+      .stats-grid{grid-template-columns:1fr 1fr}
+      .form-row{grid-template-columns:1fr}
+      .config-display{grid-template-columns:1fr}
+    }
+    .mobile-menu-btn{
+      display:none;position:fixed;top:16px;left:16px;z-index:200;
+      width:40px;height:40px;background:var(--navy2);border:1px solid var(--border);
+      border-radius:10px;cursor:pointer;align-items:center;justify-content:center;color:var(--cyan);
+    }
+    @media(max-width:768px){.mobile-menu-btn{display:flex}}
+  </style>
+</head>
+<body>
+
+<!-- ── LOGIN SCREEN ── -->
+<div id="loginScreen">
+  <div class="login-box">
+    <div class="login-logo"><i class="fas fa-print"></i></div>
+    <h2>Admin Panel</h2>
+    <p>AMtechiesPRINTER — Secure Access</p>
+    <input type="text" class="login-field" id="loginUser" placeholder="Admin Username" autocomplete="off"/>
+    <input type="password" class="login-field" id="loginPass" placeholder="Password" onkeydown="if(event.key==='Enter')doLogin()"/>
+    <button class="login-btn" onclick="doLogin()"><i class="fas fa-unlock"></i> &nbsp;Sign In</button>
+    <div class="login-err" id="loginErr"><i class="fas fa-exclamation-circle"></i> &nbsp;<span id="loginErrMsg">Invalid credentials.</span></div>
+    <div class="login-attempts" id="attemptsLeft"></div>
+  </div>
+</div>
+
+<!-- ── MOBILE MENU BUTTON ── -->
+<button class="mobile-menu-btn" onclick="document.getElementById('sidebar').classList.toggle('open')">
+  <i class="fas fa-bars"></i>
+</button>
+
+<!-- ── ADMIN APP ── -->
+<div id="adminApp">
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sb-brand">
+      <div class="sb-brand-icon"><i class="fas fa-print"></i></div>
+      <div class="sb-brand-text">
+        <span>AMtechiesPRINTER</span>
+        <span>Admin Console</span>
+      </div>
+    </div>
+    <nav class="sb-nav">
+      <div class="sb-nav-title">Main</div>
+      <button class="sb-link active" onclick="showPanel('dashboard',this)"><i class="fas fa-tachometer-alt"></i> Dashboard</button>
+      <button class="sb-link" onclick="showPanel('contact',this)"><i class="fas fa-phone-alt"></i> TFN & Contact</button>
+      <button class="sb-link" onclick="showPanel('email',this)"><i class="fas fa-envelope"></i> Email Settings</button>
+      <div class="sb-nav-title" style="margin-top:8px">Integrations</div>
+      <button class="sb-link" onclick="showPanel('tawkto',this)"><i class="fas fa-comments"></i> Tawk.to Chat</button>
+      <button class="sb-link" onclick="showPanel('google',this)"><i class="fab fa-google"></i> Google Verification</button>
+      <div class="sb-nav-title" style="margin-top:8px">Security</div>
+      <button class="sb-link" onclick="showPanel('password',this)"><i class="fas fa-lock"></i> Change Password</button>
+      <button class="sb-link" onclick="showPanel('activity',this)"><i class="fas fa-history"></i> Activity Log</button>
+    </nav>
+    <div class="sb-footer">
+      <span class="status-dot"></span> Logged in as <strong>admin</strong><br>
+      <span style="font-size:.7rem;margin-top:4px;display:block">amtechiesprinter@gmail.com</span>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+    <div class="topbar-admin">
+      <div>
+        <div class="page-title" id="panelTitle">Dashboard</div>
+        <div class="page-sub" id="panelSub">Overview of your site configuration</div>
+      </div>
+      <button class="logout-btn" onclick="doLogout()"><i class="fas fa-sign-out-alt"></i> Logout</button>
+    </div>
+
+    <!-- ── DASHBOARD PANEL ── -->
+    <div class="panel active" id="panel-dashboard">
+      <div class="stats-grid">
+        <div class="stat-tile">
+          <div class="st-icon blue"><i class="fas fa-phone-alt"></i></div>
+          <div class="st-num" id="dash-tfn-display">—</div>
+          <div class="st-lbl">Current TFN</div>
+        </div>
+        <div class="stat-tile">
+          <div class="st-icon green"><i class="fas fa-envelope"></i></div>
+          <div class="st-num" style="font-size:1rem" id="dash-email-display">—</div>
+          <div class="st-lbl">Support Email</div>
+        </div>
+        <div class="stat-tile">
+          <div class="st-icon gold"><i class="fab fa-rocketchat"></i></div>
+          <div class="st-num" id="dash-chat-status">—</div>
+          <div class="st-lbl">Tawk.to Status</div>
+        </div>
+        <div class="stat-tile">
+          <div class="st-icon red"><i class="fas fa-shield-alt"></i></div>
+          <div class="st-num" id="dash-last-login">—</div>
+          <div class="st-lbl">Last Login</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title"><i class="fas fa-cog"></i> Live Configuration</div>
+        <div class="card-sub">Current values being served on the website. Edit via the panels on the left.</div>
+        <div class="config-display" id="configDisplay">
+          <!-- filled by JS -->
+        </div>
+        <a href="index.html" target="_blank" class="save-btn" style="text-decoration:none">
+          <i class="fas fa-external-link-alt"></i> View Live Website
+        </a>
+      </div>
+
+      <div class="card">
+        <div class="card-title"><i class="fas fa-info-circle"></i> Quick Setup Guide</div>
+        <div class="card-sub">Steps to fully configure your AMtechiesPRINTER website.</div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;gap:12px;align-items:center;padding:14px;background:rgba(0,232,150,.05);border:1px solid rgba(0,232,150,.2);border-radius:12px">
+            <i class="fas fa-check-circle" style="color:var(--green);font-size:1.1rem"></i>
+            <span style="font-size:.88rem">Set your Toll Free Number in <strong>TFN & Contact</strong></span>
+          </div>
+          <div style="display:flex;gap:12px;align-items:center;padding:14px;background:rgba(0,212,255,.05);border:1px solid rgba(0,212,255,.2);border-radius:12px">
+            <i class="fas fa-arrow-circle-right" style="color:var(--cyan);font-size:1.1rem"></i>
+            <span style="font-size:.88rem">Configure your email in <strong>Email Settings</strong></span>
+          </div>
+          <div style="display:flex;gap:12px;align-items:center;padding:14px;background:rgba(0,212,255,.05);border:1px solid rgba(0,212,255,.2);border-radius:12px">
+            <i class="fas fa-arrow-circle-right" style="color:var(--cyan);font-size:1.1rem"></i>
+            <span style="font-size:.88rem">Get your Tawk.to widget ID from <strong>Tawk.to Chat</strong></span>
+          </div>
+          <div style="display:flex;gap:12px;align-items:center;padding:14px;background:rgba(0,212,255,.05);border:1px solid rgba(0,212,255,.2);border-radius:12px">
+            <i class="fas fa-arrow-circle-right" style="color:var(--cyan);font-size:1.1rem"></i>
+            <span style="font-size:.88rem">Add your Google verification code in <strong>Google Verification</strong></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── TFN & CONTACT PANEL ── -->
+    <div class="panel" id="panel-contact">
+      <div class="card">
+        <div class="card-title"><i class="fas fa-phone-alt"></i> Toll Free Number (TFN)</div>
+        <div class="card-sub">Update the TFN displayed across the entire website — announcement bar, header, contact section, and footer.</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Display Number (what users see)</label>
+            <input type="text" class="form-input" id="inp-tfn" placeholder="+1 (800) 000-0000"/>
+          </div>
+          <div class="form-group">
+            <label>Tel Link (digits only, no spaces)</label>
+            <input type="text" class="form-input" id="inp-tfnTel" placeholder="+18000000000"/>
+          </div>
+        </div>
+        <button class="save-btn" onclick="saveSetting('tfn')"><i class="fas fa-save"></i> Save TFN</button>
+      </div>
+
+      <div class="card">
+        <div class="card-title"><i class="fas fa-clock"></i> Business Hours Text</div>
+        <div class="card-sub">Update the business hours shown in the Contact section.</div>
+        <div class="form-group">
+          <label>Hours Line 1</label>
+          <input type="text" class="form-input" id="inp-hours1" placeholder="Monday – Friday: 8:00 AM – 10:00 PM EST"/>
+        </div>
+        <div class="form-group">
+          <label>Hours Line 2</label>
+          <input type="text" class="form-input" id="inp-hours2" placeholder="Saturday – Sunday: 9:00 AM – 8:00 PM EST"/>
+        </div>
+        <div class="form-group">
+          <label>Announcement Bar Text</label>
+          <input type="text" class="form-input" id="inp-announce" placeholder="🔧 SAME DAY SERVICE available..."/>
+        </div>
+        <button class="save-btn" onclick="saveSetting('contact')"><i class="fas fa-save"></i> Save Contact Info</button>
+      </div>
+    </div>
+
+    <!-- ── EMAIL SETTINGS PANEL ── -->
+    <div class="panel" id="panel-email">
+      <div class="card">
+        <div class="card-title"><i class="fas fa-envelope"></i> Support Email Address</div>
+        <div class="card-sub">This email appears on the website and receives all contact form submissions via FormSubmit.co.</div>
+        <div class="form-group">
+          <label>Support Email</label>
+          <input type="email" class="form-input" id="inp-email" placeholder="amtechiesprinter@gmail.com"/>
+        </div>
+        <div class="form-group">
+          <label>Display Email (can differ from actual if needed)</label>
+          <input type="email" class="form-input" id="inp-emailDisplay" placeholder="amtechiesprinter@gmail.com"/>
+        </div>
+        <button class="save-btn" onclick="saveSetting('email')"><i class="fas fa-save"></i> Save Email Settings</button>
+      </div>
+
+      <div class="card">
+        <div class="card-title"><i class="fas fa-paper-plane"></i> FormSubmit.co Setup</div>
+        <div class="card-sub">How to activate email notifications when a contact form is submitted.</div>
+        <div class="tawk-steps">
+          <div class="tawk-step">
+            <div class="tawk-step-num">1</div>
+            <div class="tawk-step-body">
+              <h4>Activate FormSubmit</h4>
+              <p>Open your <code>index.html</code> and confirm the form action is set to:<br>
+              <div class="code-block">action="https://formsubmit.co/amtechiesprinter@gmail.com"</div></p>
+            </div>
+          </div>
+          <div class="tawk-step">
+            <div class="tawk-step-num">2</div>
+            <div class="tawk-step-body">
+              <h4>First Submission Activates It</h4>
+              <p>When the first form is submitted, FormSubmit.co will send a confirmation email to <strong>amtechiesprinter@gmail.com</strong>. Click the confirmation link to activate.</p>
+            </div>
+          </div>
+          <div class="tawk-step">
+            <div class="tawk-step-num">3</div>
+            <div class="tawk-step-body">
+              <h4>All Future Submissions Go to Gmail</h4>
+              <p>After activation, every support form submission will be emailed to <strong>amtechiesprinter@gmail.com</strong> with full customer details.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── TAWK.TO PANEL ── -->
+    <div class="panel" id="panel-tawkto">
+      <div class="card">
+        <div class="card-title"><i class="fas fa-comments"></i> Tawk.to Chat Widget ID</div>
+        <div class="card-sub">Enter your Tawk.to Property ID and Widget ID to activate live chat on your website.</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Property ID</label>
+            <input type="text" class="form-input" id="inp-tawkPropId" placeholder="e.g. 64abc1234def5678901234"/>
+          </div>
+          <div class="form-group">
+            <label>Widget / Chat ID</label>
+            <input type="text" class="form-input" id="inp-tawkWidgetId" placeholder="e.g. default or 1abc2def"/>
+          </div>
+        </div>
+        <button class="save-btn" onclick="saveSetting('tawkto')"><i class="fas fa-save"></i> Save Tawk.to IDs</button>
+        <div id="tawk-embed-preview" style="display:none;margin-top:20px">
+          <div class="card-sub">Copy this embed code into your <code>index.html</code> before <code>&lt;/body&gt;</code>:</div>
+          <div class="code-block" id="tawkCodePreview"></div>
+          <button onclick="copyTawkCode()" class="save-btn" style="margin-top:12px;background:rgba(0,232,150,.15);border:1px solid rgba(0,232,150,.3);color:var(--green);box-shadow:none">
+            <i class="fas fa-copy"></i> Copy Embed Code
+          </button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title"><i class="fas fa-map-signs"></i> How to Find Your Tawk.to IDs</div>
+        <div class="card-sub">Follow these steps to get your unique widget embed code.</div>
+        <div class="tawk-steps">
+          <div class="tawk-step">
+            <div class="tawk-step-num">1</div>
+            <div class="tawk-step-body">
+              <h4>Log in to Tawk.to</h4>
+              <p>Go to <a href="https://tawk.to" target="_blank">https://tawk.to</a> and sign in with <strong>amtechiesprinter@gmail.com</strong></p>
+            </div>
+          </div>
+          <div class="tawk-step">
+            <div class="tawk-step-num">2</div>
+            <div class="tawk-step-body">
+              <h4>Navigate to Chat Widget</h4>
+              <p>Go to: <strong>Administration → Channels → Chat Widget</strong></p>
+            </div>
+          </div>
+          <div class="tawk-step">
+            <div class="tawk-step-num">3</div>
+            <div class="tawk-step-body">
+              <h4>Click the "JavaScript" Tab</h4>
+              <p>You will see embed code like:<br>
+              <div class="code-block">s1.src='https://embed.tawk.to/<span style="color:var(--gold)">PROPERTY_ID</span>/<span style="color:var(--green)">WIDGET_ID</span>';</div></p>
+            </div>
+          </div>
+          <div class="tawk-step">
+            <div class="tawk-step-num">4</div>
+            <div class="tawk-step-body">
+              <h4>Copy Both IDs Here</h4>
+              <p>Paste the <span style="color:var(--gold)">Property ID</span> and <span style="color:var(--green)">Widget ID</span> into the fields above and click Save.</p>
+            </div>
+          </div>
+          <div class="tawk-step">
+            <div class="tawk-step-num">5</div>
+            <div class="tawk-step-body">
+              <h4>Update index.html</h4>
+              <p>Use the generated embed code preview to update the tawk.to script section in your <code>index.html</code>.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── GOOGLE VERIFICATION PANEL ── -->
+    <div class="panel" id="panel-google">
+      <div class="card">
+        <div class="card-title"><i class="fab fa-google"></i> Google Site Verification</div>
+        <div class="card-sub">Enter your Google verification code for Google Ads / Search Console. This goes in the &lt;head&gt; meta tag.</div>
+        <div class="form-group">
+          <label>Google Verification Code</label>
+          <input type="text" class="form-input" id="inp-googleVerify" placeholder="e.g. google-site-verification: googleXXXXXXXXXXXXXXXX.html"/>
+        </div>
+        <button class="save-btn" onclick="saveSetting('google')"><i class="fas fa-save"></i> Save Verification Code</button>
+        <div style="margin-top:20px">
+          <div class="card-sub">Add this to your <code>index.html</code> inside <code>&lt;head&gt;</code>:</div>
+          <div class="code-block" id="googleMetaPreview">&lt;meta name="google-site-verification" content="<span id="googleCodeSpan">YOUR_CODE_HERE</span>" /&gt;</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title"><i class="fas fa-question-circle"></i> How to get Google Verification Code</div>
+        <div class="card-sub">Steps to verify your site with Google Search Console (required for Google Ads).</div>
+        <div class="tawk-steps">
+          <div class="tawk-step"><div class="tawk-step-num">1</div><div class="tawk-step-body"><h4>Go to Google Search Console</h4><p>Visit <a href="https://search.google.com/search-console" target="_blank">search.google.com/search-console</a></p></div></div>
+          <div class="tawk-step"><div class="tawk-step-num">2</div><div class="tawk-step-body"><h4>Add a Property</h4><p>Click "Add Property" and enter your website URL (e.g. https://amtechiesprinter.com)</p></div></div>
+          <div class="tawk-step"><div class="tawk-step-num">3</div><div class="tawk-step-body"><h4>Choose HTML Tag Method</h4><p>Select "HTML tag" as the verification method. You'll get a meta tag code.</p></div></div>
+          <div class="tawk-step"><div class="tawk-step-num">4</div><div class="tawk-step-body"><h4>Copy the content= value</h4><p>Copy just the content value (not the full tag) and paste it in the field above.</p></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── PASSWORD PANEL ── -->
+    <div class="panel" id="panel-password">
+      <div class="card">
+        <div class="card-title"><i class="fas fa-lock"></i> Change Admin Password</div>
+        <div class="card-sub">Update the password used to access this admin panel.</div>
+        <div class="pw-warn"><i class="fas fa-exclamation-triangle"></i> Make sure you remember the new password. Store it securely.</div>
+        <div class="form-group">
+          <label>Current Password</label>
+          <input type="password" class="form-input" id="inp-curPass" placeholder="Enter current password"/>
+        </div>
+        <div class="form-group">
+          <label>New Password</label>
+          <input type="password" class="form-input" id="inp-newPass" placeholder="Minimum 8 characters"/>
+        </div>
+        <div class="form-group">
+          <label>Confirm New Password</label>
+          <input type="password" class="form-input" id="inp-confPass" placeholder="Repeat new password"/>
+        </div>
+        <button class="save-btn" onclick="changePassword()"><i class="fas fa-key"></i> Update Password</button>
+        <div id="pw-msg" style="margin-top:14px;font-size:.83rem;display:none"></div>
+      </div>
+    </div>
+
+    <!-- ── ACTIVITY LOG PANEL ── -->
+    <div class="panel" id="panel-activity">
+      <div class="card">
+        <div class="card-title"><i class="fas fa-history"></i> Admin Activity Log</div>
+        <div class="card-sub">Recent admin actions recorded in this browser session.</div>
+        <div id="activityLog">
+          <div class="log-item">
+            <div class="log-icon login"><i class="fas fa-sign-in-alt"></i></div>
+            <div class="log-text">
+              <div class="log-action">Admin logged in</div>
+              <div class="log-time" id="loginTimeLog">—</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"><i class="fas fa-check-circle"></i> <span id="toastMsg">Saved!</span></div>
+
+<script>
+  /* ═══════════════════════════════════════════════
+     AUTH
+  ═══════════════════════════════════════════════ */
+  const DEFAULT_PASS = 'Support@2026';
+  const PASS_KEY = 'amt_admin_pass';
+  const CFG_KEY  = 'amt_config';
+  let loginAttempts = 0;
+  const MAX_ATTEMPTS = 5;
+
+  function getPass(){ return localStorage.getItem(PASS_KEY) || DEFAULT_PASS; }
+
+  async function hashPass(str) {
+    const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+    return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+  }
+
+  async function doLogin(){
+    const user = document.getElementById('loginUser').value.trim();
+    const pass = document.getElementById('loginPass').value;
+    if(loginAttempts >= MAX_ATTEMPTS){
+      showLoginErr('Too many failed attempts. Refresh the page to try again.');
+      return;
+    }
+    if(!user || !pass){ showLoginErr('Please enter username and password.'); return; }
+    // Accept username "admin" or the email
+    const validUser = (user === 'admin' || user === 'amtechiesprinter@gmail.com');
+    const validPass = (pass === getPass());
+    if(validUser && validPass){
+      document.getElementById('loginScreen').style.display = 'none';
+      document.getElementById('adminApp').style.display   = 'block';
+      const now = new Date().toLocaleString();
+      localStorage.setItem('amt_last_login', now);
+      document.getElementById('loginTimeLog').textContent = now;
+      loadDashboard();
+    } else {
+      loginAttempts++;
+      showLoginErr(`Invalid credentials. ${MAX_ATTEMPTS - loginAttempts} attempt(s) remaining.`);
+    }
+  }
+
+  function showLoginErr(msg){
+    const err = document.getElementById('loginErr');
+    document.getElementById('loginErrMsg').textContent = msg;
+    err.style.display = 'flex';
+    const pass = document.getElementById('loginPass');
+    pass.style.borderColor = 'var(--red)';
+    setTimeout(()=>{ pass.style.borderColor=''; }, 2000);
+  }
+
+  function doLogout(){
+    document.getElementById('loginScreen').style.display = 'flex';
+    document.getElementById('adminApp').style.display = 'none';
+    document.getElementById('loginPass').value = '';
+    document.getElementById('loginUser').value = '';
+    document.getElementById('loginErr').style.display = 'none';
+    loginAttempts = 0;
+  }
+
+  /* ═══════════════════════════════════════════════
+     CONFIG HELPERS
+  ═══════════════════════════════════════════════ */
+  function getCfg(){
+    return JSON.parse(localStorage.getItem(CFG_KEY) || '{}');
+  }
+  function setCfg(updates){
+    const cfg = getCfg();
+    Object.assign(cfg, updates);
+    localStorage.setItem(CFG_KEY, JSON.stringify(cfg));
+    logActivity('Config updated: ' + Object.keys(updates).join(', '));
+  }
+
+  const DEFAULTS = {
+    tfn: '+1 (800) 000-0000',
+    tfnTel: '+18000000000',
+    email: 'amtechiesprinter@gmail.com',
+    emailDisplay: 'amtechiesprinter@gmail.com',
+    hours1: 'Monday – Friday: 8:00 AM – 10:00 PM EST',
+    hours2: 'Saturday – Sunday: 9:00 AM – 8:00 PM EST',
+    announce: '🔧 SAME DAY SERVICE available — Call us now',
+    tawkPropId: '',
+    tawkWidgetId: '',
+    googleVerify: '',
+  };
+
+  function val(key){ const c=getCfg(); return c[key]||DEFAULTS[key]||''; }
+
+  /* ═══════════════════════════════════════════════
+     PANELS
+  ═══════════════════════════════════════════════ */
+  const panelTitles = {
+    dashboard: ['Dashboard','Overview of your site configuration'],
+    contact: ['TFN & Contact','Update your Toll Free Number and contact info'],
+    email: ['Email Settings','Manage support email and FormSubmit configuration'],
+    tawkto: ['Tawk.to Chat','Configure your live chat widget'],
+    google: ['Google Verification','Add your Google Ads verification code'],
+    password: ['Change Password','Update admin panel access credentials'],
+    activity: ['Activity Log','Recent admin actions in this session'],
+  };
+
+  function showPanel(name, btn){
+    document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+    document.querySelectorAll('.sb-link').forEach(b=>b.classList.remove('active'));
+    document.getElementById('panel-'+name).classList.add('active');
+    if(btn) btn.classList.add('active');
+    const [t,s] = panelTitles[name]||[name,''];
+    document.getElementById('panelTitle').textContent = t;
+    document.getElementById('panelSub').textContent = s;
+    if(name==='dashboard') loadDashboard();
+    if(name==='contact')   loadContactPanel();
+    if(name==='email')     loadEmailPanel();
+    if(name==='tawkto')    loadTawkPanel();
+    if(name==='google')    loadGooglePanel();
+  }
+
+  /* ═══════════════════════════════════════════════
+     LOAD PANELS
+  ═══════════════════════════════════════════════ */
+  function loadDashboard(){
+    document.getElementById('dash-tfn-display').textContent = val('tfn');
+    document.getElementById('dash-email-display').textContent = val('email');
+    const tpid = val('tawkPropId');
+    document.getElementById('dash-chat-status').textContent = tpid ? '✓ Set' : 'Not Set';
+    document.getElementById('dash-chat-status').style.color = tpid ? 'var(--green)' : 'var(--red)';
+    const ll = localStorage.getItem('amt_last_login') || 'N/A';
+    document.getElementById('dash-last-login').textContent = ll.split(',')[1]||ll;
+
+    const cfgD = document.getElementById('configDisplay');
+    cfgD.innerHTML = `
+      <div class="cfg-item"><div class="cfg-key">📞 Toll Free Number</div><div class="cfg-val tfn">${val('tfn')}</div></div>
+      <div class="cfg-item"><div class="cfg-key">📧 Support Email</div><div class="cfg-val email">${val('email')}</div></div>
+      <div class="cfg-item"><div class="cfg-key">💬 Tawk.to Property ID</div><div class="cfg-val">${val('tawkPropId')||'<span style="color:var(--red)">Not configured</span>'}</div></div>
+      <div class="cfg-item"><div class="cfg-key">🔍 Google Verify</div><div class="cfg-val">${val('googleVerify')||'<span style="color:var(--muted)">Not set</span>'}</div></div>
+    `;
+  }
+
+  function loadContactPanel(){
+    document.getElementById('inp-tfn').value     = val('tfn');
+    document.getElementById('inp-tfnTel').value  = val('tfnTel');
+    document.getElementById('inp-hours1').value  = val('hours1');
+    document.getElementById('inp-hours2').value  = val('hours2');
+    document.getElementById('inp-announce').value = val('announce');
+  }
+
+  function loadEmailPanel(){
+    document.getElementById('inp-email').value        = val('email');
+    document.getElementById('inp-emailDisplay').value = val('emailDisplay');
+  }
+
+  function loadTawkPanel(){
+    document.getElementById('inp-tawkPropId').value   = val('tawkPropId');
+    document.getElementById('inp-tawkWidgetId').value = val('tawkWidgetId');
+    updateTawkPreview();
+  }
+
+  function loadGooglePanel(){
+    document.getElementById('inp-googleVerify').value = val('googleVerify');
+    updateGooglePreview();
+  }
+
+  /* ═══════════════════════════════════════════════
+     SAVE SETTINGS
+  ═══════════════════════════════════════════════ */
+  function saveSetting(which){
+    if(which==='tfn'){
+      setCfg({ tfn: document.getElementById('inp-tfn').value, tfnTel: document.getElementById('inp-tfnTel').value });
+    } else if(which==='contact'){
+      setCfg({ hours1: document.getElementById('inp-hours1').value, hours2: document.getElementById('inp-hours2').value, announce: document.getElementById('inp-announce').value });
+    } else if(which==='email'){
+      setCfg({ email: document.getElementById('inp-email').value, emailDisplay: document.getElementById('inp-emailDisplay').value });
+    } else if(which==='tawkto'){
+      setCfg({ tawkPropId: document.getElementById('inp-tawkPropId').value, tawkWidgetId: document.getElementById('inp-tawkWidgetId').value });
+      updateTawkPreview();
+    } else if(which==='google'){
+      setCfg({ googleVerify: document.getElementById('inp-googleVerify').value });
+      updateGooglePreview();
+    }
+    showToast('✓ Settings saved successfully!');
+  }
+
+  function updateTawkPreview(){
+    const pid = document.getElementById('inp-tawkPropId').value;
+    const wid = document.getElementById('inp-tawkWidgetId').value || 'default';
+    if(pid){
+      const code = `&lt;!--Start of Tawk.to Script--&gt;\n&lt;script type="text/javascript"&gt;\nvar Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();\n(function(){\n  var s1=document.createElement("script"),\n      s0=document.getElementsByTagName("script")[0];\n  s1.async=true;\n  s1.src='https://embed.tawk.to/${pid}/${wid}';\n  s1.charset='UTF-8';\n  s1.setAttribute('crossorigin','*');\n  s0.parentNode.insertBefore(s1,s0);\n})();\n&lt;/script&gt;\n&lt;!--End of Tawk.to Script--&gt;`;
+      document.getElementById('tawkCodePreview').innerHTML = code;
+      document.getElementById('tawk-embed-preview').style.display = 'block';
+    }
+  }
+
+  function updateGooglePreview(){
+    const code = document.getElementById('inp-googleVerify').value || 'YOUR_CODE_HERE';
+    document.getElementById('googleCodeSpan').textContent = code;
+  }
+
+  function copyTawkCode(){
+    const pid = document.getElementById('inp-tawkPropId').value;
+    const wid = document.getElementById('inp-tawkWidgetId').value || 'default';
+    const raw = `<!--Start of Tawk.to Script-->\n<script type="text/javascript">\nvar Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();\n(function(){\nvar s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];\ns1.async=true;\ns1.src='https://embed.tawk.to/${pid}/${wid}';\ns1.charset='UTF-8';\ns1.setAttribute('crossorigin','*');\ns0.parentNode.insertBefore(s1,s0);\n})();\n<\/script>\n<!--End of Tawk.to Script-->`;
+    navigator.clipboard.writeText(raw).then(()=> showToast('✓ Tawk.to embed code copied!'));
+  }
+
+  /* ═══════════════════════════════════════════════
+     PASSWORD CHANGE
+  ═══════════════════════════════════════════════ */
+  function changePassword(){
+    const cur  = document.getElementById('inp-curPass').value;
+    const nw   = document.getElementById('inp-newPass').value;
+    const conf = document.getElementById('inp-confPass').value;
+    const msg  = document.getElementById('pw-msg');
+    msg.style.display = 'block';
+    if(cur !== getPass()){ msg.style.color='var(--red)'; msg.textContent='✗ Current password is incorrect.'; return; }
+    if(nw.length < 6){ msg.style.color='var(--red)'; msg.textContent='✗ New password must be at least 6 characters.'; return; }
+    if(nw !== conf){ msg.style.color='var(--red)'; msg.textContent='✗ Passwords do not match.'; return; }
+    localStorage.setItem(PASS_KEY, nw);
+    msg.style.color = 'var(--green)';
+    msg.textContent = '✓ Password updated successfully!';
+    ['inp-curPass','inp-newPass','inp-confPass'].forEach(id=>document.getElementById(id).value='');
+    logActivity('Admin password changed');
+    showToast('✓ Password changed!');
+  }
+
+  /* ═══════════════════════════════════════════════
+     ACTIVITY LOG
+  ═══════════════════════════════════════════════ */
+  const activityBuffer = [];
+  function logActivity(action){
+    activityBuffer.unshift({ action, time: new Date().toLocaleString() });
+    renderLog();
+  }
+  function renderLog(){
+    const container = document.getElementById('activityLog');
+    let html = activityBuffer.map(e=>`
+      <div class="log-item">
+        <div class="log-icon change"><i class="fas fa-edit"></i></div>
+        <div class="log-text">
+          <div class="log-action">${e.action}</div>
+          <div class="log-time">${e.time}</div>
+        </div>
+      </div>`).join('');
+    html += `<div class="log-item">
+      <div class="log-icon login"><i class="fas fa-sign-in-alt"></i></div>
+      <div class="log-text">
+        <div class="log-action">Admin session started</div>
+        <div class="log-time" id="loginTimeLog">${localStorage.getItem('amt_last_login')||'N/A'}</div>
+      </div>
+    </div>`;
+    container.innerHTML = html;
+  }
+
+  /* ═══════════════════════════════════════════════
+     TOAST
+  ═══════════════════════════════════════════════ */
+  function showToast(msg){
+    const t = document.getElementById('toast');
+    document.getElementById('toastMsg').textContent = msg;
+    t.style.display = 'flex';
+    clearTimeout(window._toastTimer);
+    window._toastTimer = setTimeout(()=>{ t.style.display='none'; }, 3200);
+  }
+
+  /* ═══════════════════════════════════════════════
+     ENTER KEY ON LOGIN
+  ═══════════════════════════════════════════════ */
+  document.getElementById('loginUser').addEventListener('keydown', e=> { if(e.key==='Enter') doLogin(); });
+</script>
+</body>
+</html>

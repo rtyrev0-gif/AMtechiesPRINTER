@@ -1,0 +1,1907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="AMtechiesPRINTER – Professional printer support & repair services for Canon, HP, and Brother. Driver installation, software licensing, and online support." />
+  <meta name="keywords" content="printer repair, HP support, Canon support, Brother printer, driver installation, printer service, AMtechiesPRINTER" />
+  <!-- Google Ads Verification — replace with your actual verification code -->
+  <meta name="google-site-verification" content="YOUR_GOOGLE_VERIFICATION_CODE_HERE" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="AMtechiesPRINTER – Expert Printer Support" />
+  <meta property="og:description" content="Certified support for HP, Canon & Brother printers. Driver installation, software, licenses, and more." />
+  <meta property="og:type" content="website" />
+  <title>AMtechiesPRINTER | Expert Printer Support & Services</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --navy: #070d1f;
+      --navy2: #0c1530;
+      --navy3: #111d3f;
+      --cyan: #00d4ff;
+      --cyan2: #00a8cc;
+      --gold: #f5a623;
+      --green: #00e896;
+      --red: #ff4757;
+      --text: #e8eeff;
+      --muted: #8a9cc4;
+      --card: #0e1a3a;
+      --border: rgba(0,212,255,0.15);
+      --glow: 0 0 30px rgba(0,212,255,0.2);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--navy);
+      color: var(--text);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* ─── SCROLLBAR ─── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--navy); }
+    ::-webkit-scrollbar-thumb { background: var(--cyan); border-radius: 3px; }
+
+    /* ─── TOPBAR ─── */
+    .topbar {
+      background: var(--navy2);
+      border-bottom: 1px solid var(--border);
+      padding: 8px 0;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+    .topbar-inner {
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .topbar a { color: var(--cyan); text-decoration: none; }
+    .topbar .tfn {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: 0.5px;
+    }
+    .topbar .tfn i { margin-right: 6px; }
+
+    /* ─── NAVBAR ─── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(7,13,31,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+    .logo-icon {
+      width: 44px; height: 44px;
+      background: linear-gradient(135deg, var(--cyan), #0066ff);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+      box-shadow: var(--glow);
+    }
+    .logo-text { line-height: 1.1; }
+    .logo-text span:first-child {
+      display: block;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.15rem;
+      color: #fff;
+      letter-spacing: -0.5px;
+    }
+    .logo-text span:last-child {
+      font-size: 0.65rem;
+      color: var(--cyan);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+    .nav-links a:hover { color: var(--cyan); background: rgba(0,212,255,0.08); }
+    .nav-cta {
+      background: linear-gradient(135deg, var(--cyan), #0066ff) !important;
+      color: #fff !important;
+      font-weight: 600 !important;
+      padding: 10px 20px !important;
+      box-shadow: 0 4px 15px rgba(0,212,255,0.3);
+    }
+    .nav-cta:hover { opacity: 0.9; transform: translateY(-1px); }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--cyan); border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative;
+      min-height: 88vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      padding: 80px 24px;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 60% 40%, rgba(0,100,255,0.12) 0%, transparent 60%),
+                  radial-gradient(ellipse 50% 50% at 20% 70%, rgba(0,212,255,0.08) 0%, transparent 50%);
+    }
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,212,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,212,255,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
+    }
+    .hero-inner {
+      max-width: 1200px;
+      margin: auto;
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      width: 100%;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0,212,255,0.1);
+      border: 1px solid rgba(0,212,255,0.3);
+      border-radius: 30px;
+      padding: 6px 16px;
+      font-size: 0.8rem;
+      color: var(--cyan);
+      font-weight: 600;
+      margin-bottom: 24px;
+      letter-spacing: 0.5px;
+    }
+    .hero-badge .dot {
+      width: 7px; height: 7px;
+      background: var(--green);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity:1; transform:scale(1); }
+      50% { opacity:0.6; transform:scale(1.3); }
+    }
+    .hero h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      font-weight: 800;
+      line-height: 1.12;
+      margin-bottom: 20px;
+      letter-spacing: -1px;
+    }
+    .hero h1 .accent { color: var(--cyan); }
+    .hero p {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 500px;
+      margin-bottom: 36px;
+      line-height: 1.7;
+    }
+    .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--cyan), #0066ff);
+      color: #fff;
+      padding: 14px 32px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s;
+      box-shadow: 0 6px 24px rgba(0,212,255,0.3);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,212,255,0.4); }
+    .btn-outline {
+      border: 1.5px solid var(--border);
+      color: var(--text);
+      padding: 14px 32px;
+      border-radius: 12px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s;
+    }
+    .btn-outline:hover { border-color: var(--cyan); color: var(--cyan); background: rgba(0,212,255,0.06); }
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 48px;
+    }
+    .stat-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      text-align: center;
+    }
+    .stat-card .num {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--cyan);
+    }
+    .stat-card .lbl { font-size: 0.78rem; color: var(--muted); margin-top: 4px; }
+    .hero-visual {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      animation: floatUp 0.8s ease forwards;
+    }
+    @keyframes floatUp {
+      from { opacity:0; transform:translateY(30px); }
+      to { opacity:1; transform:translateY(0); }
+    }
+    .hero-card-big {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-card-big::before {
+      content: '';
+      position: absolute;
+      top: -50px; right: -50px;
+      width: 150px; height: 150px;
+      background: radial-gradient(circle, rgba(0,212,255,0.15), transparent 70%);
+      border-radius: 50%;
+    }
+    .brand-logos {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .brand-pill {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 10px 20px;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 1px;
+    }
+    .brand-pill.hp { color: #0096d6; border-color: rgba(0,150,214,0.3); }
+    .brand-pill.canon { color: #cc0000; border-color: rgba(204,0,0,0.3); }
+    .brand-pill.brother { color: #00a0e9; border-color: rgba(0,160,233,0.3); }
+    .service-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag {
+      background: rgba(0,212,255,0.08);
+      border: 1px solid rgba(0,212,255,0.2);
+      color: var(--cyan);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 500;
+    }
+    .hero-mini-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .mini-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .mini-icon {
+      width: 40px; height: 40px; flex-shrink: 0;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+    }
+    .mini-icon.blue { background: rgba(0,212,255,0.12); color: var(--cyan); }
+    .mini-icon.green { background: rgba(0,232,150,0.12); color: var(--green); }
+    .mini-icon.gold { background: rgba(245,166,35,0.12); color: var(--gold); }
+    .mini-icon.purple { background: rgba(150,100,255,0.12); color: #a068ff; }
+    .mini-card .title { font-size: 0.85rem; font-weight: 600; }
+    .mini-card .sub { font-size: 0.73rem; color: var(--muted); }
+
+    /* ─── SECTIONS ─── */
+    section { padding: 90px 24px; }
+    .container { max-width: 1200px; margin: auto; }
+    .section-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--cyan);
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      color: var(--muted);
+      font-size: 1rem;
+      max-width: 560px;
+      line-height: 1.7;
+    }
+    .section-header { margin-bottom: 56px; }
+    .section-header.center { text-align: center; }
+    .section-header.center .section-sub { margin: auto; }
+
+    /* ─── SERVICES ─── */
+    .services-bg { background: var(--navy2); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .service-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--cyan), #0066ff);
+      transform: scaleX(0);
+      transition: transform 0.3s;
+      transform-origin: left;
+    }
+    .service-card:hover { transform: translateY(-6px); border-color: rgba(0,212,255,0.4); box-shadow: var(--glow); }
+    .service-card:hover::after { transform: scaleX(1); }
+    .svc-icon {
+      width: 56px; height: 56px;
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, rgba(0,212,255,0.15), rgba(0,102,255,0.15));
+      color: var(--cyan);
+    }
+    .service-card h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .service-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; }
+    .svc-badge {
+      display: inline-block;
+      margin-top: 16px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--green);
+      background: rgba(0,232,150,0.1);
+      border: 1px solid rgba(0,232,150,0.25);
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+
+    /* ─── BRANDS & MODELS ─── */
+    .brands-section { background: var(--navy); }
+    .brand-tabs {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+    .brand-tab {
+      padding: 10px 28px;
+      border-radius: 12px;
+      border: 1.5px solid var(--border);
+      background: transparent;
+      color: var(--muted);
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      letter-spacing: 0.5px;
+    }
+    .brand-tab.active, .brand-tab:hover {
+      background: linear-gradient(135deg, var(--cyan), #0066ff);
+      border-color: transparent;
+      color: #fff;
+      box-shadow: 0 4px 15px rgba(0,212,255,0.3);
+    }
+    .models-panel { display: none; }
+    .models-panel.active { display: block; }
+    .models-category { margin-bottom: 32px; }
+    .cat-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .cat-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+    .models-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 10px;
+    }
+    .model-pill {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-size: 0.83rem;
+      font-weight: 500;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+    .model-pill i { color: var(--cyan); font-size: 0.75rem; }
+    .model-pill:hover { border-color: var(--cyan); color: var(--cyan); background: rgba(0,212,255,0.06); }
+
+    /* ─── PROBLEMS ─── */
+    .problems-section { background: var(--navy2); }
+    .problems-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+    }
+    .problem-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 22px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      transition: all 0.2s;
+    }
+    .problem-card:hover { border-color: rgba(245,166,35,0.4); transform: translateY(-3px); }
+    .prob-icon {
+      width: 42px; height: 42px; flex-shrink: 0;
+      background: rgba(245,166,35,0.12);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold);
+      font-size: 1rem;
+    }
+    .problem-card h4 { font-size: 0.92rem; font-weight: 600; margin-bottom: 4px; }
+    .problem-card p { font-size: 0.8rem; color: var(--muted); line-height: 1.5; }
+
+    /* ─── WHY US ─── */
+    .whyus-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .why-list { display: flex; flex-direction: column; gap: 20px; }
+    .why-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .why-num {
+      width: 42px; height: 42px; flex-shrink: 0;
+      border-radius: 10px;
+      background: linear-gradient(135deg, rgba(0,212,255,0.2), rgba(0,102,255,0.2));
+      border: 1px solid rgba(0,212,255,0.3);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 0.9rem;
+      color: var(--cyan);
+    }
+    .why-item h4 { font-weight: 600; margin-bottom: 4px; }
+    .why-item p { font-size: 0.85rem; color: var(--muted); }
+    .why-visual {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 36px;
+    }
+    .why-visual-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 24px;
+      color: var(--cyan);
+    }
+    .review-card {
+      background: rgba(0,0,0,0.2);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 16px;
+    }
+    .stars { color: var(--gold); font-size: 0.85rem; margin-bottom: 8px; }
+    .review-text { font-size: 0.85rem; color: var(--muted); font-style: italic; margin-bottom: 12px; }
+    .reviewer { display: flex; align-items: center; gap: 10px; }
+    .rev-avatar {
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: #fff;
+    }
+    .rev-name { font-size: 0.82rem; font-weight: 600; }
+    .rev-tag { font-size: 0.72rem; color: var(--muted); }
+
+    /* ─── CONTACT ─── */
+    .contact-section { background: var(--navy); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 48px;
+      align-items: start;
+    }
+    .contact-info { display: flex; flex-direction: column; gap: 24px; }
+    .contact-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 28px;
+    }
+    .contact-box .icon-row {
+      display: flex; align-items: center; gap: 14px; margin-bottom: 10px;
+    }
+    .c-icon {
+      width: 46px; height: 46px;
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+    }
+    .c-icon.blue { background: rgba(0,212,255,0.12); color: var(--cyan); }
+    .c-icon.gold { background: rgba(245,166,35,0.12); color: var(--gold); }
+    .c-icon.green { background: rgba(0,232,150,0.12); color: var(--green); }
+    .contact-box h4 { font-weight: 700; font-size: 1rem; }
+    .contact-box p, .contact-box a {
+      font-size: 0.88rem; color: var(--muted);
+      text-decoration: none; line-height: 1.6;
+    }
+    .contact-box a:hover { color: var(--cyan); }
+    .tfn-big {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--gold) !important;
+      letter-spacing: 1px;
+    }
+
+    /* ─── FORM ─── */
+    .form-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 40px;
+    }
+    .form-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+    .form-sub { color: var(--muted); font-size: 0.88rem; margin-bottom: 28px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { margin-bottom: 20px; }
+    .form-group label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--muted);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .form-group label span { color: var(--red); margin-left: 2px; }
+    .form-control {
+      width: 100%;
+      background: rgba(0,0,0,0.3);
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      padding: 13px 16px;
+      color: var(--text);
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.92rem;
+      outline: none;
+      transition: all 0.2s;
+    }
+    .form-control:focus {
+      border-color: var(--cyan);
+      box-shadow: 0 0 0 3px rgba(0,212,255,0.1);
+    }
+    .form-control::placeholder { color: rgba(138,156,196,0.5); }
+    select.form-control { cursor: pointer; }
+    select.form-control option { background: var(--navy2); color: var(--text); }
+    textarea.form-control { resize: vertical; min-height: 120px; }
+    .submit-btn {
+      width: 100%;
+      background: linear-gradient(135deg, var(--cyan), #0066ff);
+      border: none;
+      color: #fff;
+      padding: 16px;
+      border-radius: 14px;
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: 0 6px 20px rgba(0,212,255,0.3);
+      letter-spacing: 0.5px;
+    }
+    .submit-btn:hover { opacity: 0.9; transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,212,255,0.4); }
+    .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+    .form-notice {
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-align: center;
+      margin-top: 14px;
+    }
+    .form-notice i { color: var(--green); margin-right: 4px; }
+    /* Success Message */
+    .success-msg {
+      display: none;
+      background: rgba(0,232,150,0.1);
+      border: 1px solid rgba(0,232,150,0.4);
+      border-radius: 14px;
+      padding: 24px;
+      text-align: center;
+      margin-top: 20px;
+    }
+    .success-msg i { font-size: 2rem; color: var(--green); margin-bottom: 12px; display: block; }
+    .success-msg h4 { font-weight: 700; margin-bottom: 6px; }
+    .success-msg p { font-size: 0.85rem; color: var(--muted); }
+
+    /* ─── CHAT WIDGET ─── */
+    .chat-fab {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 12px;
+    }
+    .chat-btn {
+      width: 58px; height: 58px;
+      background: linear-gradient(135deg, var(--cyan), #0066ff);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(0,212,255,0.5);
+      transition: all 0.3s;
+      border: none;
+      color: #fff;
+      font-size: 1.3rem;
+    }
+    .chat-btn:hover { transform: scale(1.1); }
+    .chat-window {
+      width: 340px;
+      background: var(--navy2);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      display: none;
+      flex-direction: column;
+    }
+    .chat-window.open { display: flex; animation: slideUp 0.3s ease; }
+    @keyframes slideUp {
+      from { opacity:0; transform:translateY(20px); }
+      to { opacity:1; transform:translateY(0); }
+    }
+    .chat-header {
+      background: linear-gradient(135deg, #0a1a40, #0d2060);
+      padding: 18px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      justify-content: space-between;
+    }
+    .chat-agent {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .agent-av {
+      width: 38px; height: 38px;
+      background: linear-gradient(135deg, var(--cyan), #0066ff);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+    .agent-name { font-weight: 600; font-size: 0.9rem; }
+    .agent-status { font-size: 0.72rem; color: var(--green); }
+    .chat-close { background:none; border:none; color: var(--muted); cursor:pointer; font-size:1.2rem; }
+    .chat-msgs {
+      height: 260px;
+      overflow-y: auto;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .chat-bubble {
+      max-width: 85%;
+      padding: 12px 16px;
+      border-radius: 16px;
+      font-size: 0.83rem;
+      line-height: 1.5;
+    }
+    .chat-bubble.bot {
+      background: rgba(0,212,255,0.08);
+      border: 1px solid rgba(0,212,255,0.15);
+      border-bottom-left-radius: 4px;
+      align-self: flex-start;
+    }
+    .chat-bubble.user {
+      background: linear-gradient(135deg, rgba(0,212,255,0.2), rgba(0,102,255,0.2));
+      border-bottom-right-radius: 4px;
+      align-self: flex-end;
+    }
+    .chat-input-row {
+      padding: 14px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      gap: 10px;
+    }
+    .chat-input {
+      flex: 1;
+      background: rgba(0,0,0,0.3);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px 14px;
+      color: var(--text);
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.83rem;
+      outline: none;
+    }
+    .chat-input:focus { border-color: var(--cyan); }
+    .chat-send {
+      width: 38px; height: 38px;
+      background: linear-gradient(135deg, var(--cyan), #0066ff);
+      border: none;
+      border-radius: 10px;
+      color: #fff;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .chat-notification {
+      position: absolute;
+      top: -4px; right: -4px;
+      width: 16px; height: 16px;
+      background: var(--red);
+      border-radius: 50%;
+      font-size: 0.6rem;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--navy2);
+      border-top: 1px solid var(--border);
+      padding: 60px 24px 30px;
+    }
+    .footer-grid {
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    .footer-brand p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-top: 16px;
+      max-width: 280px;
+    }
+    .footer-col h5 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.88rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--cyan);
+      margin-bottom: 16px;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul li a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 0.2s;
+    }
+    .footer-col ul li a:hover { color: var(--text); }
+    .footer-bottom {
+      max-width: 1200px;
+      margin: auto;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    .footer-socials { display: flex; gap: 12px; }
+    .social-btn {
+      width: 36px; height: 36px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--muted);
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 0.85rem;
+    }
+    .social-btn:hover { border-color: var(--cyan); color: var(--cyan); }
+
+    /* ─── ANNOUNCEMENT BANNER ─── */
+    .announce {
+      background: linear-gradient(90deg, #0a2060, #061840, #0a2060);
+      background-size: 200% 100%;
+      animation: shimmer 4s linear infinite;
+      text-align: center;
+      padding: 10px;
+      font-size: 0.82rem;
+      color: var(--text);
+    }
+    @keyframes shimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+    .announce strong { color: var(--gold); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-visual { display: none; }
+      .whyus-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .hero-stats { grid-template-columns: 1fr; }
+      .hero-mini-cards { grid-template-columns: 1fr; }
+      .topbar-inner { justify-content: center; }
+    }
+    .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 70px; left: 0; right: 0; background: rgba(7,13,31,0.98); padding: 16px; border-bottom: 1px solid var(--border); }
+  </style>
+</head>
+<body>
+
+<!-- ─── ANNOUNCEMENT BAR ─── -->
+<div class="announce">
+  🔧 <strong>SAME DAY SERVICE</strong> available — Call us now: <strong id="ann-tfn">+1 (800) 000-0000</strong> · Free remote diagnostics for all printer brands
+</div>
+
+<!-- ─── TOP BAR ─── -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <div>
+      <i class="fas fa-envelope" style="margin-right:6px;color:var(--cyan)"></i>
+      <a href="/cdn-cgi/l/email-protection#86f5f3f6f6e9f4f2c6e7ebf2e3e5eeefe3f5f6f4efe8f2e3f4a8e5e9eb"><span class="__cf_email__" data-cfemail="41323431312e333501202c352422292824323133282f3524336f222e2c">[email&#160;protected]</span></a>
+      &nbsp;&nbsp;·&nbsp;&nbsp;
+      <i class="fas fa-clock" style="margin-right:6px;color:var(--cyan)"></i>
+     
+    </div>
+    <div class="tfn">
+      <i class="fas fa-phone-alt"></i>
+      Toll Free: <span id="topbar-tfn">+1 (800) 000-0000</span>
+    </div>
+  </div>
+</div>
+
+<!-- ─── NAVBAR ─── -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <div class="logo-icon"><i class="fas fa-print"></i></div>
+      <div class="logo-text">
+        <span>AMtechiesPRINTER</span>
+        <span>Certified Printer Experts</span>
+      </div>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#brands">Brands & Models</a></li>
+      <li><a href="#problems">Issues We Fix</a></li>
+      <li><a href="#why-us">Why Us</a></li>
+      <li><a href="#contact" class="nav-cta">Get Support</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="dot"></span> Certified Experts · 24/7 Support Available
+      </div>
+      <h1>
+        Professional <span class="accent">Printer Support</span><br>
+        You Can Count On
+      </h1>
+      <p>
+        Expert repair, driver installation, software licensing, and online services for HP, Canon, and Brother printers. Fast. Reliable. Guaranteed.
+      </p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-primary">
+          <i class="fas fa-headset"></i> Get Instant Support
+        </a>
+        <a href="tel:+18000000000" class="btn-outline" id="hero-call-btn">
+          <i class="fas fa-phone"></i> Call Toll Free
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-card">
+          <div class="num">12K+</div>
+          <div class="lbl">Printers Fixed</div>
+        </div>
+        <div class="stat-card">
+          <div class="num">98%</div>
+          <div class="lbl">Satisfaction Rate</div>
+        </div>
+        <div class="stat-card">
+          <div class="num">24/7</div>
+          <div class="lbl">Online Support</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card-big">
+        <div class="brand-logos">
+          <div class="brand-pill hp">HP</div>
+          <div class="brand-pill canon">CANON</div>
+          <div class="brand-pill brother">BROTHER</div>
+        </div>
+        <div class="service-tags">
+          <span class="tag"><i class="fas fa-download" style="margin-right:4px"></i>Driver Install</span>
+          <span class="tag"><i class="fas fa-key" style="margin-right:4px"></i>License</span>
+          <span class="tag"><i class="fas fa-cloud" style="margin-right:4px"></i>Online Services</span>
+          <span class="tag"><i class="fas fa-tools" style="margin-right:4px"></i>Repair</span>
+          <span class="tag"><i class="fas fa-shield-alt" style="margin-right:4px"></i>Support Plan</span>
+        </div>
+      </div>
+      <div class="hero-mini-cards">
+        <div class="mini-card">
+          <div class="mini-icon blue"><i class="fas fa-bolt"></i></div>
+          <div>
+            <div class="title">Fast Resolution</div>
+            <div class="sub">Avg. 30-min fix</div>
+          </div>
+        </div>
+        <div class="mini-card">
+          <div class="mini-icon green"><i class="fas fa-certificate"></i></div>
+          <div>
+            <div class="title">Certified Techs</div>
+            <div class="sub">HP & Canon verified</div>
+          </div>
+        </div>
+        <div class="mini-card">
+          <div class="mini-icon gold"><i class="fas fa-dollar-sign"></i></div>
+          <div>
+            <div class="title">Best Price</div>
+            <div class="sub">No hidden charges</div>
+          </div>
+        </div>
+        <div class="mini-card">
+          <div class="mini-icon purple"><i class="fas fa-wifi"></i></div>
+          <div>
+            <div class="title">Remote Support</div>
+            <div class="sub">Nationwide coverage</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SERVICES ─── -->
+<section class="services-bg" id="services">
+  <div class="container">
+    <div class="section-header center">
+      <div class="section-label">What We Offer</div>
+      <h2 class="section-title">Complete Printer Services</h2>
+      <p class="section-sub">End-to-end support for all your printer needs — from installation to advanced troubleshooting.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="svc-icon"><i class="fas fa-download"></i></div>
+        <h3>Driver Installation</h3>
+        <p>Complete driver setup for all HP, Canon, and Brother models. We ensure compatibility with Windows 10/11 and macOS.</p>
+        <span class="svc-badge">✓ Free Diagnostics</span>
+      </div>
+      <div class="service-card">
+        <div class="svc-icon"><i class="fas fa-laptop-code"></i></div>
+        <h3>Software Setup</h3>
+        <p>Full installation of printer management software, scanning utilities, and companion apps for complete functionality.</p>
+        <span class="svc-badge">✓ All Versions Supported</span>
+      </div>
+      <div class="service-card">
+        <div class="svc-icon"><i class="fas fa-key"></i></div>
+        <h3>License Activation</h3>
+        <p>Authentic license procurement and activation for HP Smart, Canon IJ, and Brother iPrint — fully compliant.</p>
+        <span class="svc-badge">✓ Genuine Licenses</span>
+      </div>
+      <div class="service-card">
+        <div class="svc-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+        <h3>Online & Cloud Services</h3>
+        <p>Setup HP ePrint, Canon PRINT Cloud, and Brother Cloud services. Mobile printing, cloud storage integration included.</p>
+        <span class="svc-badge">✓ Mobile Ready</span>
+      </div>
+      <div class="service-card">
+        <div class="svc-icon"><i class="fas fa-wifi"></i></div>
+        <h3>Wireless Configuration</h3>
+        <p>Wi-Fi setup, network printer sharing, Bluetooth pairing, and router compatibility troubleshooting.</p>
+        <span class="svc-badge">✓ All Network Types</span>
+      </div>
+      <div class="service-card">
+        <div class="svc-icon"><i class="fas fa-headset"></i></div>
+        <h3>24/7 Remote Support</h3>
+        <p>Live tech support via chat, email, and phone. Remote desktop access available for complex issues.</p>
+        <span class="svc-badge">✓ Always Available</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── BRANDS & MODELS ─── -->
+<section class="brands-section" id="brands">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Supported Devices</div>
+      <h2 class="section-title">All Brands & Models</h2>
+      <p class="section-sub">We support a comprehensive range of printer models across HP, Canon, and Brother.</p>
+    </div>
+    <div class="brand-tabs">
+      <button class="brand-tab active" onclick="switchBrand('hp', this)">🔵 HP</button>
+      <button class="brand-tab" onclick="switchBrand('canon', this)">🔴 Canon</button>
+      <button class="brand-tab" onclick="switchBrand('brother', this)">🔷 Brother</button>
+    </div>
+
+    <!-- HP Models -->
+    <div class="models-panel active" id="panel-hp">
+      <div class="models-category">
+        <div class="cat-title">HP DeskJet Series</div>
+        <div class="models-grid">
+          <div class="model-pill"><i class="fas fa-circle"></i>HP DeskJet 2700</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>HP DeskJet 2752</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>HP DeskJet 2755</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>HP DeskJet 3755</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>HP DeskJet 4155</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>HP DeskJet 4158</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>HP DeskJet Plus 4140</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>HP DeskJet Plus 4152</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>HP DeskJet 2720</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>HP DeskJet 2723</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>HP DeskJet 1110</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>HP DeskJet GT 5810</div>
+        </div>
+      </div>
+      <div class="models-category">
+        <div class="cat-title">HP OfficeJet Series</div>
+        <div class="models-grid">
+          <div class="model-pill"><i class="fas fa-circle"></i>HP OfficeJet 3830</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>HP OfficeJet 4650</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>HP OfficeJet 4655</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>HP OfficeJet 5740</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>HP OfficeJet 6978</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>HP OfficeJet Pro 8025</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>HP OfficeJet Pro 8028</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>HP OfficeJet Pro 9015</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>HP OfficeJet Pro 9018</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>HP OfficeJet Pro 9025</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>HP OfficeJet Pro 7740</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>HP OfficeJet Pro 6960</div>
+        </div>
+      </div>
+      <div class="models-category">
+        <div class="cat-title">HP LaserJet Series</div>
+        <div class="models-grid">
+          <div class="model-pill"><i class="fas fa-circle"></i>HP LaserJet Pro M15w</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>HP LaserJet Pro M28w</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>HP LaserJet Pro M102w</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>HP LaserJet Pro M404n</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>HP LaserJet Pro M404dn</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>HP LaserJet Pro M428fdw</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>HP LaserJet Pro M454dw</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>HP LaserJet Pro MFP M227fdw</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>HP LaserJet Pro MFP M283fdw</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>HP Color LaserJet Pro M255dw</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>HP Color LaserJet Pro MFP M479fdw</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>HP LaserJet Enterprise M507dn</div>
+        </div>
+      </div>
+      <div class="models-category">
+        <div class="cat-title">HP ENVY Series</div>
+        <div class="models-grid">
+          <div class="model-pill"><i class="fas fa-circle"></i>HP ENVY 4520</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>HP ENVY 5540</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>HP ENVY 6055</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>HP ENVY 6058</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>HP ENVY 6455</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>HP ENVY Photo 7155</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>HP ENVY Photo 7855</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>HP ENVY Inspire 7955e</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>HP ENVY Inspire 7255e</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Canon Models -->
+    <div class="models-panel" id="panel-canon">
+      <div class="models-category">
+        <div class="cat-title">Canon PIXMA Series</div>
+        <div class="models-grid">
+          <div class="model-pill"><i class="fas fa-circle"></i>Canon PIXMA MG2520</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>Canon PIXMA MG3620</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>Canon PIXMA MG5720</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>Canon PIXMA MG7720</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>Canon PIXMA TR4520</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>Canon PIXMA TR4527</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>Canon PIXMA TR8520</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>Canon PIXMA TR8620</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>Canon PIXMA TS6320</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>Canon PIXMA TS8320</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>Canon PIXMA TS9120</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>Canon PIXMA TS3520</div>
+        </div>
+      </div>
+      <div class="models-category">
+        <div class="cat-title">Canon imageCLASS Series</div>
+        <div class="models-grid">
+          <div class="model-pill"><i class="fas fa-circle"></i>Canon imageCLASS MF264dw</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>Canon imageCLASS MF267dw</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>Canon imageCLASS MF272dw</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>Canon imageCLASS MF445dw</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>Canon imageCLASS MF644Cdw</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>Canon imageCLASS MF743Cdw</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>Canon imageCLASS LBP227dw</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>Canon imageCLASS LBP622Cdw</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>Canon imageCLASS LBP664Cdw</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>Canon imageCLASS X LBP1238</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>Canon imageCLASS MF1238</div>
+        </div>
+      </div>
+      <div class="models-category">
+        <div class="cat-title">Canon MAXIFY & G-Series</div>
+        <div class="models-grid">
+          <div class="model-pill"><i class="fas fa-circle"></i>Canon MAXIFY MB2120</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>Canon MAXIFY MB2720</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>Canon MAXIFY MB5420</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>Canon MAXIFY iB4120</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>Canon PIXMA G1200</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>Canon PIXMA G2260</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>Canon PIXMA G3202</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>Canon PIXMA G3270</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>Canon PIXMA G620</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Brother Models -->
+    <div class="models-panel" id="panel-brother">
+      <div class="models-category">
+        <div class="cat-title">Brother MFC (All-in-One) Series</div>
+        <div class="models-grid">
+          <div class="model-pill"><i class="fas fa-circle"></i>Brother MFC-J480DW</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>Brother MFC-J680DW</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>Brother MFC-J895DW</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>Brother MFC-J4335DW</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>Brother MFC-J4540DW</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>Brother MFC-J5845DW</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>Brother MFC-J6545DW</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>Brother MFC-L2710DW</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>Brother MFC-L2750DW</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>Brother MFC-L3750CDW</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>Brother MFC-L8900CDW</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>Brother MFC-L9570CDW</div>
+        </div>
+      </div>
+      <div class="models-category">
+        <div class="cat-title">Brother HL (Laser) Series</div>
+        <div class="models-grid">
+          <div class="model-pill"><i class="fas fa-circle"></i>Brother HL-L2320D</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>Brother HL-L2350DW</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>Brother HL-L2395DW</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>Brother HL-L3210CW</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>Brother HL-L3270CDW</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>Brother HL-L5200DW</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>Brother HL-L6200DW</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>Brother HL-L8360CDW</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>Brother HL-L9310CDW</div>
+        </div>
+      </div>
+      <div class="models-category">
+        <div class="cat-title">Brother DCP & Other Series</div>
+        <div class="models-grid">
+          <div class="model-pill"><i class="fas fa-circle"></i>Brother DCP-J572DW</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>Brother DCP-L2550DW</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>Brother DCP-L2540DW</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>Brother DCP-T520W</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>Brother PT-D410</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>Brother ADS-2700W</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>Brother TD-4550DNWB</div>
+          <div class="model-pill"><i class="fas fa-circle"></i>Brother QL-800</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PROBLEMS ─── -->
+<section class="problems-section" id="problems">
+  <div class="container">
+    <div class="section-header center">
+      <div class="section-label">Common Issues</div>
+      <h2 class="section-title">Problems We Solve</h2>
+      <p class="section-sub">Our technicians are trained to diagnose and resolve a wide range of printer issues — fast.</p>
+    </div>
+    <div class="problems-grid">
+      <div class="problem-card">
+        <div class="prob-icon"><i class="fas fa-ban"></i></div>
+        <div>
+          <h4>Printer Not Printing</h4>
+          <p>Printer is powered on but no output. We diagnose spooler issues, queue errors, and driver conflicts.</p>
+        </div>
+      </div>
+      <div class="problem-card">
+        <div class="prob-icon"><i class="fas fa-exclamation-triangle"></i></div>
+        <div>
+          <h4>Paper Jam Issues</h4>
+          <p>Repeated paper jams, false jam errors, or paper feeding problems. We clear and recalibrate the feed mechanism.</p>
+        </div>
+      </div>
+      <div class="problem-card">
+        <div class="prob-icon"><i class="fas fa-plug"></i></div>
+        <div>
+          <h4>Printer Offline Error</h4>
+          <p>Printer showing offline status on Windows or Mac. We restore connection and fix TCP/IP port settings.</p>
+        </div>
+      </div>
+      <div class="problem-card">
+        <div class="prob-icon"><i class="fas fa-paint-brush"></i></div>
+        <div>
+          <h4>Print Quality Issues</h4>
+          <p>Faded prints, streaks, lines, or incorrect colors. We clean print heads and recalibrate color profiles.</p>
+        </div>
+      </div>
+      <div class="problem-card">
+        <div class="prob-icon"><i class="fas fa-wifi"></i></div>
+        <div>
+          <h4>Wireless Not Connecting</h4>
+          <p>Printer won't connect to Wi-Fi or drops connection. We configure network settings and fix IP conflicts.</p>
+        </div>
+      </div>
+      <div class="problem-card">
+        <div class="prob-icon"><i class="fas fa-microchip"></i></div>
+        <div>
+          <h4>Driver Not Found</h4>
+          <p>Driver missing, corrupted, or incompatible with OS. We install certified drivers for all OS versions.</p>
+        </div>
+      </div>
+      <div class="problem-card">
+        <div class="prob-icon"><i class="fas fa-tint-slash"></i></div>
+        <div>
+          <h4>Ink/Toner Not Recognized</h4>
+          <p>Cartridge error or toner chip issues. We resolve cartridge detection problems and update firmware.</p>
+        </div>
+      </div>
+      <div class="problem-card">
+        <div class="prob-icon"><i class="fas fa-spinner"></i></div>
+        <div>
+          <h4>Printer Spooler Error</h4>
+          <p>Print jobs stuck or spooler keeps stopping. We repair Windows spooler service and clear corrupt jobs.</p>
+        </div>
+      </div>
+      <div class="problem-card">
+        <div class="prob-icon"><i class="fas fa-clock"></i></div>
+        <div>
+          <h4>Slow Printing</h4>
+          <p>Prints taking too long. We optimize printer settings, update drivers, and fix network bottlenecks.</p>
+        </div>
+      </div>
+      <div class="problem-card">
+        <div class="prob-icon"><i class="fas fa-code"></i></div>
+        <div>
+          <h4>Error Codes</h4>
+          <p>E-series, B-series, or numeric error codes. We decode and resolve all manufacturer error messages.</p>
+        </div>
+      </div>
+      <div class="problem-card">
+        <div class="prob-icon"><i class="fas fa-scanner"></i></div>
+        <div>
+          <h4>Scanner Not Working</h4>
+          <p>Scanner undetected or producing blank scans. We reconfigure TWAIN/WIA drivers and scan software.</p>
+        </div>
+      </div>
+      <div class="problem-card">
+        <div class="prob-icon"><i class="fas fa-mobile-alt"></i></div>
+        <div>
+          <h4>Mobile Print Failure</h4>
+          <p>AirPrint, Google Cloud Print, or HP ePrint issues. We configure cloud and mobile printing end-to-end.</p>
+        </div>
+      </div>
+      <div class="problem-card">
+        <div class="prob-icon"><i class="fas fa-sync-alt"></i></div>
+        <div>
+          <h4>Firmware Update Issues</h4>
+          <p>Failed firmware updates or printer stuck in update loop. We safely recover and update your device.</p>
+        </div>
+      </div>
+      <div class="problem-card">
+        <div class="prob-icon"><i class="fas fa-network-wired"></i></div>
+        <div>
+          <h4>Shared Network Printing</h4>
+          <p>Printer not visible on home or office network. We configure shared printing across all devices.</p>
+        </div>
+      </div>
+      <div class="problem-card">
+        <div class="prob-icon"><i class="fas fa-power-off"></i></div>
+        <div>
+          <h4>Printer Won't Turn On</h4>
+          <p>Power button unresponsive or printer shuts off immediately. We diagnose hardware and power issues.</p>
+        </div>
+      </div>
+      <div class="problem-card">
+        <div class="prob-icon"><i class="fas fa-copy"></i></div>
+        <div>
+          <h4>Duplex / Two-Sided Failure</h4>
+          <p>Automatic duplex printing not working. We configure duplexer settings and fix mechanical faults.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── WHY US ─── -->
+<section id="why-us" style="background:var(--navy);">
+  <div class="container">
+    <div class="whyus-grid">
+      <div>
+        <div class="section-label">Why Choose Us</div>
+        <h2 class="section-title">The AMtechies Advantage</h2>
+        <p class="section-sub" style="margin-bottom:36px;">We've been solving printer problems since day one — combining technical expertise with unmatched customer care.</p>
+        <div class="why-list">
+          <div class="why-item">
+            <div class="why-num">01</div>
+            <div>
+              <h4>Certified Technicians</h4>
+              <p>All our techs are HP, Canon, and Brother certified with years of hands-on field experience.</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-num">02</div>
+            <div>
+              <h4>Remote & On-Site Support</h4>
+              <p>We come to you or fix remotely — whichever is faster and more convenient for you.</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-num">03</div>
+            <div>
+              <h4>No Fix, No Fee Guarantee</h4>
+              <p>If we can't solve your problem, you don't pay. Simple as that — zero risk for you.</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-num">04</div>
+            <div>
+              <h4>Transparent Pricing</h4>
+              <p>Upfront quotes before any work begins. No hidden fees, no surprise charges ever.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="why-visual">
+        <div class="why-visual-title">⭐ What Our Customers Say</div>
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p class="review-text">"My HP OfficeJet was offline for a week. AMtechiesPRINTER fixed it remotely in 20 minutes. Incredible service!"</p>
+          <div class="reviewer">
+            <div class="rev-avatar" style="background:linear-gradient(135deg,#0066ff,var(--cyan))">JM</div>
+            <div>
+              <div class="rev-name">James M.</div>
+              <div class="rev-tag">HP OfficeJet Pro 9015 · Dallas, TX</div>
+            </div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p class="review-text">"Installed the driver for my Canon imageCLASS and set up wireless printing in one call. Very professional team."</p>
+          <div class="reviewer">
+            <div class="rev-avatar" style="background:linear-gradient(135deg,#cc0000,#ff6666)">SR</div>
+            <div>
+              <div class="rev-name">Sarah R.</div>
+              <div class="rev-tag">Canon imageCLASS MF644 · Austin, TX</div>
+            </div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p class="review-text">"Got a paper jam on my Brother MFC that no one could fix. These guys resolved it remotely — highly recommended!"</p>
+          <div class="reviewer">
+            <div class="rev-avatar" style="background:linear-gradient(135deg,#00a0e9,#0066ff)">KP</div>
+            <div>
+              <div class="rev-name">Kevin P.</div>
+              <div class="rev-tag">Brother MFC-L2750DW · Chicago, IL</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CONTACT ─── -->
+<section class="contact-section" id="contact">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Reach Out</div>
+      <h2 class="section-title">Contact & Support</h2>
+      <p class="section-sub">Fill out the form and our team will get back to you immediately. You can also call or chat live.</p>
+    </div>
+    <div class="contact-grid">
+      <!-- Contact Info -->
+      <div class="contact-info">
+        <div class="contact-box">
+          <div class="icon-row">
+            <div class="c-icon gold"><i class="fas fa-phone-alt"></i></div>
+            <div>
+              <h4>Toll Free Number</h4>
+            </div>
+          </div>
+          <a href="tel:+18000000000" class="tfn-big" id="contact-tfn-link">+1 (800) 000-0000</a>
+         
+        </div>
+        <div class="contact-box">
+          <div class="icon-row">
+            <div class="c-icon blue"><i class="fas fa-envelope-open-text"></i></div>
+            <div><h4>Email Support</h4></div>
+          </div>
+          <p>General Support:<br><a href="/cdn-cgi/l/email-protection#5435392031373c3d312724263d3a203126143339353d387a373b39"><span class="__cf_email__" data-cfemail="1f7e726b7a7c77767a6c6f6d76716b7a6d5f78727e7673317c7072">[email&#160;protected]</span></a></p>
+          <p style="margin-top:8px">Business Inquiries:<br><a href="/cdn-cgi/l/email-protection#92fbfcf4fdd2f3ffe6f7f1fafbf7e1e2e0fbfce6f7e0bcf1fdff"><span class="__cf_email__" data-cfemail="b1d0dcc5d4d2d9d8d4c2c1c3d8dfc5d4c3f1d6dcd0d8dd9fd2dedc">[email&#160;protected]</span></a></p>
+        </div>
+        <div class="contact-box">
+          <div class="icon-row">
+            <div class="c-icon green"><i class="fas fa-comments"></i></div>
+            <div><h4>Live Chat</h4></div>
+          </div>
+          <p>Chat with a technician instantly using the chat button at the bottom right of this page.</p>
+          <span class="svc-badge" style="margin-top:10px;display:inline-block">● Online Now</span>
+        </div>
+        <div class="contact-box">
+          <div class="icon-row">
+            <div class="c-icon gold"><i class="fas fa-clock"></i></div>
+            <div><h4>Business Hours</h4></div>
+          </div>
+          
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="form-card">
+        <div class="form-title">Submit a Support Request</div>
+        <div class="form-sub">Our team will review your request and contact you promptly.</div>
+
+        <!-- Using FormSubmit.co for email notifications — replace YOUR_EMAIL below -->
+        <form id="supportForm" action="https://formsubmit.co/amtechiesprinter@gmail.com" method="POST" onsubmit="handleSubmit(event)">
+          <!-- FormSubmit Config -->
+          <input type="hidden" name="_subject" value="New Support Request – AMtechiesPRINTER" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_next" value="#contact" />
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Full Name <span>*</span></label>
+              <input type="text" class="form-control" name="Full Name" placeholder="John Smith" required />
+            </div>
+            <div class="form-group">
+              <label>Phone Number <span>*</span></label>
+              <input type="tel" class="form-control" name="Phone Number" placeholder="+1 (555) 000-0000" required />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Email Address <span>*</span></label>
+            <input type="email" class="form-control" name="Email" placeholder="you@email.com" required />
+          </div>
+
+          <div class="form-group">
+            <label>Full Address</label>
+            <input type="text" class="form-control" name="Address" placeholder="123 Main St, City, State, ZIP" />
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Printer Brand <span>*</span></label>
+              <select class="form-control" name="Printer Brand" id="brandSelect" onchange="updateModels()" required>
+                <option value="">— Select Brand —</option>
+                <option value="HP">HP</option>
+                <option value="Canon">Canon</option>
+                <option value="Brother">Brother</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Printer Model <span>*</span></label>
+              <select class="form-control" name="Printer Model" id="modelSelect" required>
+                <option value="">— Select Brand First —</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Issue Type <span>*</span></label>
+            <select class="form-control" name="Issue Type" required>
+              <option value="">— Select Issue —</option>
+              <option>Printer Not Printing</option>
+              <option>Paper Jam</option>
+              <option>Printer Offline</option>
+              <option>Print Quality Issues (Streaks / Faded)</option>
+              <option>Wireless / Wi-Fi Not Connecting</option>
+              <option>Driver Not Found / Installation Error</option>
+              <option>Ink or Toner Not Recognized</option>
+              <option>Printer Spooler Error</option>
+              <option>Slow Printing</option>
+              <option>Error Code on Printer</option>
+              <option>Scanner Not Working</option>
+              <option>Mobile / Cloud Print Issue</option>
+              <option>Firmware Update Problem</option>
+              <option>Network / Shared Printer Issue</option>
+              <option>Printer Won't Turn On</option>
+              <option>Duplex / Two-Sided Printing Failure</option>
+              <option>Driver Installation Needed</option>
+              <option>Software / License Activation</option>
+              <option>Online Service Setup</option>
+              <option>Other (describe below)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Problem Description <span>*</span></label>
+            <textarea class="form-control" name="Problem Description" placeholder="Please describe your issue in detail — when it started, any error messages you see, and what you've already tried..." required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label>Preferred Contact Method</label>
+            <select class="form-control" name="Preferred Contact">
+              <option value="Phone">Phone Call</option>
+              <option value="Email">Email</option>
+              <option value="Chat">Live Chat</option>
+              <option value="Any">Any</option>
+            </select>
+          </div>
+
+          <button type="submit" class="submit-btn" id="submitBtn">
+            <i class="fas fa-paper-plane"></i>
+            Submit Support Request
+          </button>
+          <p class="form-notice">
+            <i class="fas fa-lock"></i>
+            Your information is secure. We never share your data with third parties.
+          </p>
+        </form>
+
+        <div class="success-msg" id="successMsg">
+          <i class="fas fa-check-circle"></i>
+          <h4>Request Submitted Successfully!</h4>
+          <p>Thank you! Our team will review your request and contact you within 15–30 minutes. For urgent issues, please call our toll-free number.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo" style="text-decoration:none;display:flex;align-items:center;gap:12px">
+        <div class="logo-icon"><i class="fas fa-print"></i></div>
+        <div class="logo-text">
+          <span>AMtechiesPRINTER</span>
+          <span>Certified Printer Experts</span>
+        </div>
+      </div>
+      <p>Your trusted partner for HP, Canon, and Brother printer support. Certified technicians, fast resolution, and guaranteed satisfaction nationwide.</p>
+      <div class="footer-socials" style="margin-top:20px">
+        <a href="#" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="social-btn"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="social-btn"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="social-btn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" class="social-btn"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5>Services</h5>
+      <ul>
+        <li><a href="#services">Driver Installation</a></li>
+        <li><a href="#services">Software Setup</a></li>
+        <li><a href="#services">License Activation</a></li>
+        <li><a href="#services">Online Services</a></li>
+        <li><a href="#services">Wireless Config</a></li>
+        <li><a href="#services">Remote Support</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Brands</h5>
+      <ul>
+        <li><a href="#brands">HP Printers</a></li>
+        <li><a href="#brands">Canon Printers</a></li>
+        <li><a href="#brands">Brother Printers</a></li>
+        <li><a href="#problems">All Issues</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Contact</h5>
+      <ul>
+        <li><a href="tel:+18000000000" id="footer-tfn-link">+1 (800) 000-0000</a></li>
+        <li><a href="/cdn-cgi/l/email-protection#5d3c3029383e3534382e2d2f343329382f1d3a303c3431733e3230" id="footer-email-link"><span class="__cf_email__" data-cfemail="e889859c8d8b80818d9b989a81869c8d9aa88f85898184c68b8785">[email&#160;protected]</span></a></li>
+        <li><a href="#contact">Submit a Ticket</a></li>
+        <li><a href="#contact">Live Chat</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 AMtechiesPRINTER. All rights reserved.</span>
+    <span>HP®, Canon®, and Brother® are registered trademarks of their respective owners.</span>
+  </div>
+</footer>
+
+<!-- ─── TAWK.TO LIVE CHAT ─── -->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+  s1.async=true;
+  s1.src='https://embed.tawk.to/69b659395963821c34ebf147/1jjo4p39o';
+  s1.charset='UTF-8';
+  s1.setAttribute('crossorigin','*');
+  s0.parentNode.insertBefore(s1,s0);
+})();
+
+  /* ─── DYNAMIC TFN & EMAIL (Admin Panel Sync) ─── */
+  (function(){
+    var cfg = JSON.parse(localStorage.getItem('amt_config') || '{}');
+    var tfn    = cfg.tfn    || '+1 (800) 000-0000';
+    var tfnTel = cfg.tfnTel || '+18000000000';
+    var email  = cfg.email  || 'amtechiesprinter@gmail.com';
+    ['ann-tfn','topbar-tfn'].forEach(function(id){
+      var el = document.getElementById(id);
+      if(el){ el.textContent = tfn; }
+    });
+    ['hero-call-btn','contact-tfn-link','footer-tfn-link'].forEach(function(id){
+      var el = document.getElementById(id);
+      if(el){
+        el.href = 'tel:' + tfnTel;
+        if(id !== 'hero-call-btn') el.textContent = tfn;
+      }
+    });
+    ['contact-email-main','footer-email-link'].forEach(function(id){
+      var el = document.getElementById(id);
+      if(el){ el.href='mailto:'+email; el.textContent=email; }
+    });
+  })();
+
+</script>
+<!-- ─── END TAWK.TO ─── -->
+
+<script>
+  /* ─── NAV TOGGLE ─── */
+  function toggleMenu() {
+    const nav = document.getElementById('navLinks');
+    nav.classList.toggle('open');
+  }
+
+  /* ─── BRAND TABS ─── */
+  function switchBrand(brand, el) {
+    document.querySelectorAll('.models-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.brand-tab').forEach(b => b.classList.remove('active'));
+    document.getElementById('panel-' + brand).classList.add('active');
+    el.classList.add('active');
+  }
+
+  /* ─── DYNAMIC MODELS IN FORM ─── */
+  const printerModels = {
+    HP: [
+      'HP DeskJet 2700','HP DeskJet 2752','HP DeskJet 2755','HP DeskJet 3755',
+      'HP DeskJet 4155','HP DeskJet 4158','HP DeskJet Plus 4140','HP DeskJet Plus 4152',
+      'HP DeskJet 2720','HP DeskJet 2723','HP DeskJet 1110','HP DeskJet GT 5810',
+      'HP OfficeJet 3830','HP OfficeJet 4650','HP OfficeJet 4655','HP OfficeJet 5740',
+      'HP OfficeJet 6978','HP OfficeJet Pro 8025','HP OfficeJet Pro 8028',
+      'HP OfficeJet Pro 9015','HP OfficeJet Pro 9018','HP OfficeJet Pro 9025',
+      'HP OfficeJet Pro 7740','HP OfficeJet Pro 6960',
+      'HP LaserJet Pro M15w','HP LaserJet Pro M28w','HP LaserJet Pro M102w',
+      'HP LaserJet Pro M404n','HP LaserJet Pro M404dn','HP LaserJet Pro M428fdw',
+      'HP LaserJet Pro M454dw','HP LaserJet Pro MFP M227fdw','HP LaserJet Pro MFP M283fdw',
+      'HP Color LaserJet Pro M255dw','HP Color LaserJet Pro MFP M479fdw',
+      'HP LaserJet Enterprise M507dn',
+      'HP ENVY 4520','HP ENVY 5540','HP ENVY 6055','HP ENVY 6058',
+      'HP ENVY 6455','HP ENVY Photo 7155','HP ENVY Photo 7855',
+      'HP ENVY Inspire 7955e','HP ENVY Inspire 7255e'
+    ],
+    Canon: [
+      'Canon PIXMA MG2520','Canon PIXMA MG3620','Canon PIXMA MG5720','Canon PIXMA MG7720',
+      'Canon PIXMA TR4520','Canon PIXMA TR4527','Canon PIXMA TR8520','Canon PIXMA TR8620',
+      'Canon PIXMA TS6320','Canon PIXMA TS8320','Canon PIXMA TS9120','Canon PIXMA TS3520',
+      'Canon imageCLASS MF264dw','Canon imageCLASS MF267dw','Canon imageCLASS MF272dw',
+      'Canon imageCLASS MF445dw','Canon imageCLASS MF644Cdw','Canon imageCLASS MF743Cdw',
+      'Canon imageCLASS LBP227dw','Canon imageCLASS LBP622Cdw','Canon imageCLASS LBP664Cdw',
+      'Canon imageCLASS X LBP1238','Canon imageCLASS MF1238',
+      'Canon MAXIFY MB2120','Canon MAXIFY MB2720','Canon MAXIFY MB5420','Canon MAXIFY iB4120',
+      'Canon PIXMA G1200','Canon PIXMA G2260','Canon PIXMA G3202','Canon PIXMA G3270','Canon PIXMA G620'
+    ],
+    Brother: [
+      'Brother MFC-J480DW','Brother MFC-J680DW','Brother MFC-J895DW','Brother MFC-J4335DW',
+      'Brother MFC-J4540DW','Brother MFC-J5845DW','Brother MFC-J6545DW',
+      'Brother MFC-L2710DW','Brother MFC-L2750DW','Brother MFC-L3750CDW',
+      'Brother MFC-L8900CDW','Brother MFC-L9570CDW',
+      'Brother HL-L2320D','Brother HL-L2350DW','Brother HL-L2395DW',
+      'Brother HL-L3210CW','Brother HL-L3270CDW','Brother HL-L5200DW',
+      'Brother HL-L6200DW','Brother HL-L8360CDW','Brother HL-L9310CDW',
+      'Brother DCP-J572DW','Brother DCP-L2550DW','Brother DCP-L2540DW',
+      'Brother DCP-T520W','Brother PT-D410','Brother ADS-2700W',
+      'Brother TD-4550DNWB','Brother QL-800'
+    ]
+  };
+
+  function updateModels() {
+    const brand = document.getElementById('brandSelect').value;
+    const sel = document.getElementById('modelSelect');
+    sel.innerHTML = '';
+    if (!brand) {
+      sel.innerHTML = '<option value="">— Select Brand First —</option>';
+      return;
+    }
+    sel.innerHTML = '<option value="">— Select Model —</option>';
+    printerModels[brand].forEach(m => {
+      const opt = document.createElement('option');
+      opt.value = m; opt.textContent = m;
+      sel.appendChild(opt);
+    });
+  }
+
+  /* ─── FORM SUBMIT ─── */
+  function handleSubmit(e) {
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+    // For demo: show success message after a delay
+    // In production with FormSubmit, remove the e.preventDefault()
+    // and replace YOUR_EMAIL in the action attribute with your real email
+    setTimeout(() => {
+      document.getElementById('supportForm').style.display = 'none';
+      document.getElementById('successMsg').style.display = 'block';
+    }, 1500);
+    // Form submits to formsubmit.co — e.preventDefault() removed for live use
+  }
+
+  /* ─── CHAT WIDGET ─── */
+  function toggleChat() {
+    const win = document.getElementById('chatWindow');
+    const icon = document.getElementById('chatIcon');
+    const notif = document.getElementById('chatNotif');
+    win.classList.toggle('open');
+    notif.style.display = 'none';
+    icon.className = win.classList.contains('open') ? 'fas fa-times' : 'fas fa-comments';
+  }
+
+  const botReplies = [
+    "Thanks for reaching out! Could you tell me more about the exact error message you're seeing?",
+    "Got it! That's a common issue we fix daily. Let me check a few things — what OS are you using (Windows or Mac)?",
+    "Great! Our technicians are standing by. Want me to connect you with a live agent right now?",
+    "We've helped thousands of customers with this exact issue. Can you click 'Get Support' above to submit a ticket for faster service?",
+    "One of our certified technicians can resolve this for you remotely in minutes. Shall I arrange a callback?"
+  ];
+  let replyIndex = 0
+</body>
+</html>
